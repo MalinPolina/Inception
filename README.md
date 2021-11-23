@@ -12,16 +12,16 @@ For performance matters, the containers are built either from the penultimate st
 
 Project set up:
 
-• A Docker container that contains NGINX with TLSv1.2 or TLSv1.3 only.
+• A Docker container that contains NGINX with TLSv1.2 or TLSv1.3 only
 
-• A Docker container that contains WordPress + php-fpm (it must be installed and configured) only without nginx.
+• A Docker container that contains WordPress + php-fpm only without nginx
 
-• A Docker container that contains MariaDB only without nginx.
+• A Docker container that contains MariaDB only without nginx
 
-• A volume that contains your WordPress database.
+• A volume that contains your WordPress database
 
-• A second volume that contains your WordPress website files.
+• A second volume that contains your WordPress website files
 
-• A docker-network that establishes the connection between your containers.
+• A docker-network that establishes the connection between your containers
 
 Containers restart in case of a crash.
