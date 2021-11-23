@@ -1,0 +1,45 @@
+version: "3.5"
+networks:
+    default:
+        localhost:
+            name: daniseed
+volumes:
+    wordpress:
+        name: wordpress
+        driver_opts:
+           type: none
+           device: /home/daniseed/data/wordpress
+           o: bind
+    db:
+        name: mysql
+        driver_opts:
+            type: none
+            device: /home/daniseed/data/mysql
+            o: bind
+
+services:
+  nginx:
+      build: ./nginx
+      image: nginx
+      container_name: nginx_container
+      restart: always
+      ports:
+          -"443:443"
+      volumes:
+          -wordpress: /var/www/wordpress
+  wordpress:
+      build: ./wordpress
+      image: wordpress
+      container_name: wordpress_container
+      restart: always
+      depends_on:
+          -db
+      volumes:
+          -wordpress: /var/www/wordpress
+  mysql:
+      build: ./mysql
+      image: mysql
+      container_name: db_container
+      restart: always
+      volumes:
+          -db: /var/lib/mysql
