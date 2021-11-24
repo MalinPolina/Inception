@@ -1,4 +1,4 @@
-FROM alpine:3.12
+FROM alpine:3.15
 MAINTAINER daniseed <daniseed@student.21-school.ru>
 
 RUN apk update upgrade
