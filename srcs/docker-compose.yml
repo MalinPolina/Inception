@@ -1,8 +1,8 @@
 version: "3.5"
 networks:
-    default:
-        localhost:
-            name: daniseed
+  default:
+    name: daniseed
+
 volumes:
     wordpress:
         name: wordpress
@@ -24,22 +24,22 @@ services:
       container_name: nginx_container
       restart: always
       ports:
-          -"443:443"
+        - "443:443"
       volumes:
-          -wordpress: /var/www/wordpress
+          - wordpress:/var/www/wordpress
   wordpress:
       build: ./wordpress
       image: wordpress
       container_name: wordpress_container
       restart: always
       depends_on:
-          -db
+        - mysql
       volumes:
-          -wordpress: /var/www/wordpress
+          - wordpress:/var/www/wordpress
   mysql:
       build: ./mysql
       image: mysql
       container_name: db_container
       restart: always
       volumes:
-          -db: /var/lib/mysql
+          - db:/var/lib/mysql
