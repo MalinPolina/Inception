@@ -1,14 +1,14 @@
-FROM alpine:3.15
+FROM debian:buster
 MAINTAINER daniseed <daniseed@student.21-school.ru>
 
-RUN apk update upgrade
+RUN apt-get update
 
-RUN apk add wget php7 php7-fpm php7-mysqli mysql-client
+RUN apt-get install wget php7.3 php-fpm php-mysqli mariadb-client
 
 RUN wget https://wordpress.org/latest.tar.gz
 RUN tar -xvzf latest.tar.gz && rm -rf latest.tar.gz
 
 COPY wp-config.php ./var/www/wordpress/
-COPY www.conf /etc/php/7/fpm/pool.d/
+COPY www.conf /etc/php/7.3/fpm/pool.d/
 
-CMD ./usr/sbin/php-fpm7 -F
+CMD ./usr/sbin/php-fpm7.3 -F
