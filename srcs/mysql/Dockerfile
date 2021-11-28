@@ -6,7 +6,7 @@ RUN apt-get install mariadb-server -y
 
 COPY ./ .
 RUN mv ./db.sql /
-COPY ./my.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
+COPY ./my.cnf /etc/mysql/
 RUN service mysql start && mysql < db.sql
 
 EXPOSE 3306
