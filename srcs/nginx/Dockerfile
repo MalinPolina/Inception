@@ -14,4 +14,4 @@ RUN openssl req -x509 -nodes -days 365 -subj "/C=RU/ST=Russia/L=Moscow/O=21schoo
 
 EXPOSE 443
 
-CMD ["./start.sh"]
+CMD ["nginx", "-g", "daemon off;"]
