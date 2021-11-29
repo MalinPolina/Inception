@@ -25,6 +25,8 @@ services:
       restart: always
       ports:
         - "443:443"
+      depends_on:
+        - wordpress
       volumes:
           - wordpress:/var/www/wordpress
   wordpress:
@@ -37,9 +39,16 @@ services:
       volumes:
           - wordpress:/var/www/wordpress
   mysql:
-      build: ./mysql
+      build:
+        context: ./mysql
+        args:
+          - ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD
+          - USER=$MYSQL_USER
+          - PASSWORD=$MYSQL_PASSWORD
       image: mysql
       container_name: db_container
       restart: always
+      env_file:
+        - .env
       volumes:
           - db:/var/lib/mysql
