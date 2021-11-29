@@ -24,5 +24,10 @@ logs:
 	docker-compose -f srcs/docker-compose.yml logs --tail=100 -f
 ps:
 	docker-compose -f srcs/docker-compose.yml ps
+clean:
+	sudo rm -Rf ../../data/mysql
+	sudo rm -Rf ../../data/wordpress
+	mkdir ../../data/mysql
+	mkdir ../../data/wordpress
 
-.PHONY: all build up start down stop kill re logs ps
+.PHONY: all build up start down stop kill re logs ps clean
