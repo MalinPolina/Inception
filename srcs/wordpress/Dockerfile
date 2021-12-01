@@ -12,4 +12,5 @@ COPY wp-config.php ./var/www/wordpress/
 COPY www.conf /etc/php/7.3/fpm/pool.d/
 RUN mkdir ./run/php
 
-CMD ./usr/sbin/php-fpm7.3 -F
+EXPOSE 9000
+CMD ["/usr/sbin/php-fpm7.3", "-F"]

@@ -25,6 +25,7 @@ logs:
 ps:
 	docker-compose -f srcs/docker-compose.yml ps
 clean:
+	sudo docker system prune -a --force
 	sudo rm -Rf ../../data/mysql
 	sudo rm -Rf ../../data/wordpress
 	mkdir ../../data/mysql
