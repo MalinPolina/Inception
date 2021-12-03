@@ -26,10 +26,10 @@ define( 'DB_NAME', 'my_db' );
 
 /** MySQL database username */
 //define( 'DB_USER', getenv(MYSQL_USER) );
-define('DB_USER', daniseed);
+define('DB_USER', 'daniseed');
 /** MySQL database password */
 //define( 'DB_PASSWORD', getenv(MYSQL_PASSWORD));
-define('DB_PASSWORD', password);
+define('DB_PASSWORD', 'password');
 /** MySQL hostname */
 define( 'DB_HOST', 'mysql' );
 

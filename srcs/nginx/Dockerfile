@@ -6,13 +6,11 @@ RUN apt-get install -y nginx openssl
 
 COPY . ./
 COPY nginx.conf ./etc/nginx/sites-enabled/default
-RUN mkdir -p /run/nginx
+COPY start.sh ./
+RUN  chmod +x ./start.sh
 
 RUN openssl req -x509 -nodes -days 365 -subj "/C=RU/ST=Russia/L=Moscow/O=21school/OU=21moscow/CN=daniseed" -newkey rsa:2048 -keyout /etc/ssl/nginx.key -out /etc/ssl/nginx.crt;
 
-RUN chown -R www-data:www-data /var/www/wordpress
-RUN chown -R 755 /var/www/wordpress
-
 EXPOSE 443
-
+ENTRYPOINT ["./start.sh"]
 CMD ["nginx", "-g", "daemon off;"]

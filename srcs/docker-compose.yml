@@ -46,7 +46,7 @@ services:
       networks:
         - nw
       volumes:
-          - wordpress:/var/www/wordpress
+          - wordpress:/wordpress
   mysql:
       build:
         context: ./mysql

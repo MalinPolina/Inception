@@ -4,7 +4,7 @@ build:
 	docker-compose -f srcs/docker-compose.yml build
 
 up:
-	docker-compose -f srcs/docker-compose.yml up
+	docker-compose -f srcs/docker-compose.yml up -d
 
 start:
 	docker-compose -f srcs/docker-compose.yml start
