@@ -13,6 +13,7 @@ COPY ./my.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
 RUN chown -R mysql:mysql /var/lib/mysql
 COPY start.sh ./
 RUN chmod +x ./start.sh
+COPY data_dump.sql ./
 
 EXPOSE 3306
 ENTRYPOINT ["./start.sh"]
