@@ -46,11 +46,12 @@ services:
       networks:
         - nw
       volumes:
-          - wordpress:/wordpress
+          - wordpress:/var/www/wordpress
   mysql:
       build:
         context: ./mysql
         args:
+          - DATABASE=$MYSQL_DATABASE
           - ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD
           - USER=$MYSQL_USER
           - PASSWORD=$MYSQL_PASSWORD

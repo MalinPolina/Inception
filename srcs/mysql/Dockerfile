@@ -4,6 +4,7 @@ MAINTAINER daniseed <daniseed@student.21-school.ru>
 RUN apt-get update
 RUN apt-get install -y mariadb-server
 
+ARG DATABASE
 ARG ROOT_PASSWORD
 ARG USER
 ARG PASSWORD

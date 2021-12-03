@@ -4,8 +4,8 @@ MAINTAINER daniseed <daniseed@student.21-school.ru>
 RUN apt-get update
 RUN apt-get install -y wget php7.3 php-fpm php-mysqli php-mbstring php-gd mariadb-client
 
-RUN wget https://wordpress.org/latest.tar.gz
-RUN tar -xvzf latest.tar.gz && rm -rf latest.tar.gz
+ADD https://wordpress.org/latest.tar.gz /var/www/
+RUN cd /var/www && tar -xvzf latest.tar.gz && rm -rf latest.tar.gz
 
 COPY wp-config.php ./var/www/wordpress/
 COPY www.conf /etc/php/7.3/fpm/pool.d/
