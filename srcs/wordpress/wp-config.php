@@ -19,17 +19,19 @@
  */
 
 // ** MySQL settings - You can get this info from your web host ** //
+define('WP_CACHE_KEY_SALT', 'daniseed.42.fr');
+define('WP_CACHE', true);
 /** The name of the database for WordPress */
 define( 'DB_NAME', 'my_db' );
 
 /** MySQL database username */
-define( 'DB_USER', getenv(MYSQL_USER) );
-
+//define( 'DB_USER', getenv(MYSQL_USER) );
+define('DB_USER', daniseed);
 /** MySQL database password */
-define( 'DB_PASSWORD', getenv(MYSQL_PASSWORD));
-
+//define( 'DB_PASSWORD', getenv(MYSQL_PASSWORD));
+define('DB_PASSWORD', password);
 /** MySQL hostname */
-define( 'DB_HOST', 'mariadb' );
+define( 'DB_HOST', 'mysql' );
 
 /** Database Charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );

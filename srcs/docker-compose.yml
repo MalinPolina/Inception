@@ -1,17 +1,20 @@
 version: "3.5"
 networks:
-  default:
-    name: daniseed
+  nw:
+    name: nw
+    driver: bridge
 
 volumes:
     wordpress:
         name: wordpress
+        driver: local
         driver_opts:
            type: none
            device: /home/daniseed/data/wordpress
            o: bind
     db:
         name: mysql
+        driver: local
         driver_opts:
             type: none
             device: /home/daniseed/data/mysql
@@ -27,6 +30,8 @@ services:
         - "443:443"
       depends_on:
         - wordpress
+      networks:
+        - nw
       volumes:
           - wordpress:/var/www/wordpress
   wordpress:
@@ -34,8 +39,12 @@ services:
       image: wordpress
       container_name: wordpress_container
       restart: always
+      env_file: .env
+      user: root
       depends_on:
         - mysql
+      networks:
+        - nw
       volumes:
           - wordpress:/var/www/wordpress
   mysql:
@@ -48,7 +57,9 @@ services:
       image: mysql
       container_name: db_container
       restart: always
-      env_file:
-        - .env
+      env_file: .env
+      user: root
+      networks:
+        - nw
       volumes:
           - db:/var/lib/mysql
