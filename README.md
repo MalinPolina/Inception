@@ -8,7 +8,7 @@ Each Docker image have the same name as its corresponding service.
 
 Each service runs in a dedicated container.
 
-For performance matters, the containers are built either from the penultimate stable version of Alpine Linux.
+For performance matters, the containers are built from the penultimate stable version of Debian Buster.
 
 Project set up:
 
